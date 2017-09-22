@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E17F4DE11F75BEED00DE71B4 /* Automatica-BRK.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E17F4DE01F75BE0900DE71B4 /* Automatica-BRK.ttf */; };
 		E1B40B1A1F732A960044C3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B40B191F732A960044C3EA /* AppDelegate.swift */; };
 		E1B40B1C1F732A960044C3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B40B1B1F732A960044C3EA /* ViewController.swift */; };
 		E1B40B1F1F732A960044C3EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B40B1D1F732A960044C3EA /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E17F4DE01F75BE0900DE71B4 /* Automatica-BRK.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Automatica-BRK.ttf"; sourceTree = "<group>"; };
 		E1B40B161F732A960044C3EA /* SimpleCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B40B191F732A960044C3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B40B1B1F732A960044C3EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E17F4DDF1F75BDB900DE71B4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E17F4DE01F75BE0900DE71B4 /* Automatica-BRK.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		E1B40B0D1F732A960044C3EA = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		E1B40B181F732A960044C3EA /* SimpleCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				E17F4DDF1F75BDB900DE71B4 /* Fonts */,
 				E1B40B191F732A960044C3EA /* AppDelegate.swift */,
 				E1B40B1B1F732A960044C3EA /* ViewController.swift */,
 				E1B40B1D1F732A960044C3EA /* Main.storyboard */,
@@ -124,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E17F4DE11F75BEED00DE71B4 /* Automatica-BRK.ttf in Resources */,
 				E1B40B241F732A960044C3EA /* LaunchScreen.storyboard in Resources */,
 				E1B40B211F732A960044C3EA /* Assets.xcassets in Resources */,
 				E1B40B1F1F732A960044C3EA /* Main.storyboard in Resources */,
