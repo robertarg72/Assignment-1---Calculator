@@ -1,11 +1,11 @@
-//
-//  AppDelegate.swift
-//  SimpleCalculator
-//
-//  Created by Robert Argume on 2017-09-20.
-//  Copyright © 2017 Robert Argume. All rights reserved.
-//
-
+/*
+ * AppDelegate.swift
+ * Project: SimpleCalculator
+ * Name: Robert Argume
+ * StudentID: 300949529
+ * Description: Intermediate User Interactions Demo
+ * Version: 0.1 - Added UI Initial Design
+ */
 import UIKit
 
 @UIApplicationMain
