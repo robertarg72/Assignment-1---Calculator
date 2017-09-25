@@ -3,12 +3,7 @@
  * Project: SimpleCalculator
  * Name: Robert Argume
  * StudentID: 300949529
- * Description: Intermediate User Interactions Demo
- * Version: 0.2 - Added restrictions that work well with all iPhone simulators except for smaller
- * devices like SE, 5 and older versions.
- * Notes:
- *   - UI design and development was performed using the iPhone 8 View
- *   - For other "View As" options like Iphone 8 Plus, many restrictions show errors
+ * Description: Simple Calculator App developded for Assignment 1
  */
 import UIKit
 
