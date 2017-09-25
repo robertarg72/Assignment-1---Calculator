@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     // Constante values to be used in the logic
     let dotCharAscii = 46
     let displayMaxLengthPortrait = 10
+    let initialStringOnDisplay = "0"
 
     
     // OUTLETS
@@ -50,7 +51,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        displayText.text = "0"
+        displayText.text = initialStringOnDisplay
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,6 +62,11 @@ class ViewController: UIViewController {
     // ACTIONS
     // =========================================================================
     
+    // Clear the display by showing the initial string "0"
+    @IBAction func clearButtonPushed(_ sender: UIButton) {
+        displayText.text = initialStringOnDisplay
+    }
+    
     // Run state machine logic each time a numeric button is pushed, including "."
     @IBAction func numericButtonPushed(_ sender: UIButton) {
         let input = sender.tag
@@ -70,7 +76,7 @@ class ViewController: UIViewController {
         switch inputState {
             case .Initial:
                 if inputType == NumericInputType.DigitOnetoNine {
-                    if displayText.text == "0" {
+                    if displayText.text == initialStringOnDisplay {
                         displayText.text = ""
                     }
                     concatDigitAndContinueProcessingIntegerPart(inputString)
