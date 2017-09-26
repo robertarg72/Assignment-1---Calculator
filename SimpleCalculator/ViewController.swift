@@ -66,9 +66,14 @@ class ViewController: UIViewController {
         case SpecialConstants   //Like e, PI, G, etc
     }
     
+    // Variable to save how many chars can be added to the display.
+    // This depends on the current device orientation
+    var displayMaxLength: Int?
+    
     // Various constant values to be used in this App
     let dotCharAscii = 46
     let displayMaxLengthPortrait = 10
+    let displayMaxLengthLandscape = 17
     let initialStringOnDisplay = "0"
     let errorMessage = "Error"
 
@@ -87,8 +92,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resetOperationsEnvironment()
+        displayMaxLength = getDisplayMaxLength()
         lastBinaryOperation = nil
         showInDisplay(initialStringOnDisplay)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        displayMaxLength = getDisplayMaxLength()
     }
     
     override func didReceiveMemoryWarning() {
@@ -250,6 +261,14 @@ class ViewController: UIViewController {
     // Private methods
     // =========================================================================
     
+    // Returns the max amount of chars to be concatenated to the display according to current device orientation
+    private func getDisplayMaxLength() -> Int {
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            return displayMaxLengthLandscape
+        }
+        return displayMaxLengthPortrait
+    }
+    
     // Updates the string shown in the display text label
     private func showInDisplay(_ value: String) {
         var valueToShow = value
@@ -346,7 +365,7 @@ class ViewController: UIViewController {
     
     // Concatenate a char to the current value of the display
     private func concatDigit(_ input:String) {
-        if (displayText.text?.count)! < displayMaxLengthPortrait {
+        if (displayText.text?.count)! < displayMaxLength! {
                 displayText.text?.append(input)
         }
     }
