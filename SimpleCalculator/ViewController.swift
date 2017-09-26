@@ -249,7 +249,15 @@ class ViewController: UIViewController {
     
     // Updates the string shown in the display text label
     private func showInDisplay(_ value: String) {
-        displayText.text! = value
+        var valueToShow = value
+        if valueToShow.characters.contains(".") {
+            let indexOfDecimalPoint = valueToShow.characters.index(of: ".")
+            let fractionalPart = valueToShow.substring(from: indexOfDecimalPoint!)
+            if fractionalPart == ".0" {
+                valueToShow = valueToShow.substring(to: indexOfDecimalPoint!)
+            }
+        }
+        displayText.text! = valueToShow
     }
     
     private func getPercentageValue(_ value: String?) -> Float{
