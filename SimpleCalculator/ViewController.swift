@@ -4,7 +4,7 @@
  * Name: Robert Argume
  * StudentID: 300949529
  * Description: Simple Calculator App developded for Assignment 1
- * Version: 0.6 - Added logic to update display when button Equal or Clear are tapped
+ * Version: 0.7 - Added logic for "+/-" button
  * Notes:
  *   - UI design/development using iPhone SE, then scaled up to larger screens
  *   - Some constraints warning are shown in the storyboard, but the simulator renders the App correctly
@@ -22,7 +22,8 @@ class ViewController: UIViewController {
         case Initial
         case IntegerPart
         case FractionalPart
-        case OperationInProgress
+        case BinaryOperationInProgress
+        case ChangeSignOperationInProgress
     }
     var inputState: State = .Initial
     
@@ -117,10 +118,36 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func unaryOperationButtonPushed(_ sender: UIButton) {
+        if displayText.text == errorMessage {
+            return
+        }
+        
+        switch getInputType(sender.tag) {
+            case .ChangeSign:
+                if inputState != .BinaryOperationInProgress {
+                    if displayText.text!.characters.first == "-" {
+                        let index = displayText.text!.index(displayText.text!.startIndex, offsetBy: 1)
+                        displayText.text! = displayText.text!.substring(from: index)
+                    }
+                    else {
+                        displayText.text! = "-" + displayText.text!
+                    }
+                }
+                else {
+                    displayText.text = "-0"
+                    inputState = .ChangeSignOperationInProgress
+                }
+                return
+            default:
+                return
+        }
+    }
+    
     // Run binary operations logic
     // Based on a stack structure to prioritize execution of binary operations
     @IBAction func binaryOperationButtonPushed(_ sender: UIButton) {
-        inputState = .OperationInProgress
+        inputState = .BinaryOperationInProgress
         let currentOperation: InputType = getInputType(sender.tag)
         let currentOperationAsString: String = String(describing: currentOperation)
         
@@ -149,10 +176,15 @@ class ViewController: UIViewController {
     // Run state machine logic each time a numeric button is pushed, including "."
     @IBAction func numericButtonPushed(_ sender: UIButton) {
         
-        if inputState == State.OperationInProgress {
+        if inputState == State.BinaryOperationInProgress {
             inputState = .Initial
             displayText.text = initialStringOnDisplay
         }
+        else if inputState == .ChangeSignOperationInProgress {
+            inputState = .Initial
+            displayText.text = "-"
+        }
+        
         let input = sender.tag
         let inputType = getInputType(input)
         let inputString = String(input)
@@ -199,7 +231,6 @@ class ViewController: UIViewController {
     // Set calculation variables to their initial values
     private func resetOperationsEnvironment () {
         operationStack.flush()
-        //lastBinaryOperation = nil
         lastSecondOperand = initialStringOnDisplay
         inputState = .Initial
     }
