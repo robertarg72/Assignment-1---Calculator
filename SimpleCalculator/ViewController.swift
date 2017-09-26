@@ -4,10 +4,11 @@
  * Name: Robert Argume
  * StudentID: 300949529
  * Description: Simple Calculator App developded for Assignment 1
- * Version: 0.85 - Added About Screen
+ * Version: 0.9 - Added images for buttons and set a background color
  * Notes:
  *   - UI design/development using iPhone SE, then scaled up to larger screens
  *   - Some constraints warning are shown in the storyboard, but the simulator renders the App correctly
+ *   - Buttons size correctly for landscape orientation for all iPhones screen, but the images used as background does not size very good for landscape
  */
 
 import UIKit

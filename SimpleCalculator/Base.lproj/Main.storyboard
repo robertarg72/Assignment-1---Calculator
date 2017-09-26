@@ -71,209 +71,171 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKy-Vo-eNd" userLabel="Button-0">
-                                <rect key="frame" x="12" y="475.5" width="145" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKy-Vo-eNd" userLabel="Button-0">
+                                <rect key="frame" x="12" y="475" width="145" height="75"/>
+                                <state key="normal" backgroundImage="Button 0">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="3ap-gs-iNB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nF3-Cu-uWh" userLabel="Button-1">
-                                <rect key="frame" x="12" y="396" width="70.5" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="1">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nF3-Cu-uWh" userLabel="Button-1">
+                                <rect key="frame" x="12" y="395.5" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button 1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="LF3-wm-8ly"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-Jh-1qQ" userLabel="Button-2">
-                                <rect key="frame" x="87.5" y="396" width="69.5" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="2">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-Jh-1qQ" userLabel="Button-2">
+                                <rect key="frame" x="87" y="395.5" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button 2">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="T58-iD-5z9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyQ-wo-ad0" userLabel="Button-3">
-                                <rect key="frame" x="162" y="396" width="70.5" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="3">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyQ-wo-ad0" userLabel="Button-3">
+                                <rect key="frame" x="162" y="395" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button 3">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="d4M-44-p6w"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quc-0h-x5A" userLabel="Button-4">
-                                <rect key="frame" x="12" y="316" width="70.5" height="75"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="4">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quc-0h-x5A" userLabel="Button-4">
+                                <rect key="frame" x="12" y="315.5" width="70" height="75"/>
+                                <state key="normal" backgroundImage="Button 4">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="yxS-3z-EQv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppa-h6-49S" userLabel="Button-5">
-                                <rect key="frame" x="87.5" y="316" width="69.5" height="75"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="5">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppa-h6-49S" userLabel="Button-5">
+                                <rect key="frame" x="87" y="315.5" width="70" height="75"/>
+                                <state key="normal" backgroundImage="Button 5">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="JZB-pm-630"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyq-lV-FSN" userLabel="Button-6">
-                                <rect key="frame" x="162" y="316" width="70.5" height="75"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="6">
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyq-lV-FSN" userLabel="Button-6">
+                                <rect key="frame" x="162" y="315.5" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button 6">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="CZO-lS-utl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ex-Zz-U7V" userLabel="Button-7">
-                                <rect key="frame" x="12" y="236" width="70.5" height="75"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="7">
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ex-Zz-U7V" userLabel="Button-7">
+                                <rect key="frame" x="12" y="235.5" width="70" height="75"/>
+                                <state key="normal" backgroundImage="Button 7">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="dmF-U0-pKq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMj-R7-1sH" userLabel="Button-8">
-                                <rect key="frame" x="87.5" y="236" width="69.5" height="75"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="8">
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMj-R7-1sH" userLabel="Button-8">
+                                <rect key="frame" x="87" y="236" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button 8">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="VMF-fp-8Id"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya3-Ek-UeF" userLabel="Button-9">
-                                <rect key="frame" x="162" y="236" width="70.5" height="75"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="9">
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya3-Ek-UeF" userLabel="Button-9">
+                                <rect key="frame" x="162" y="236" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button 9">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="c6F-zp-OGJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDM-7Y-5XM" userLabel="Button-Clear">
-                                <rect key="frame" x="12.5" y="156.5" width="70" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="C">
+                            <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDM-7Y-5XM" userLabel="Button-Clear">
+                                <rect key="frame" x="12.5" y="156" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button - Clear">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="clearButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="XFi-u7-T05"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT6-He-2KA" userLabel="Button-ChangeSign">
-                                <rect key="frame" x="87.5" y="156.5" width="69.5" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="+/-">
+                            <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT6-He-2KA" userLabel="Button-ChangeSign">
+                                <rect key="frame" x="87.5" y="156.5" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button - ChangeSIgn">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="unaryOperationButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="ez4-ni-CSK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg7-gn-6HM" userLabel="Button-Percentage">
-                                <rect key="frame" x="162" y="156.5" width="70.5" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="%">
+                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg7-gn-6HM" userLabel="Button-Percentage">
+                                <rect key="frame" x="162.5" y="156.5" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button - Percentage">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="unaryOperationButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="QqJ-Oe-QDg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYu-bi-7lF" userLabel="Button-Division">
+                            <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYu-bi-7lF" userLabel="Button-Division">
                                 <rect key="frame" x="237.5" y="156.5" width="70" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="/">
+                                <state key="normal" backgroundImage="Button - Divide">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="binaryOperationButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="Cf4-7f-pWy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQK-iN-hrX" userLabel="Button-Muliplication">
-                                <rect key="frame" x="237.5" y="236" width="69.5" height="75"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="x">
+                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQK-iN-hrX" userLabel="Button-Muliplication">
+                                <rect key="frame" x="237" y="236" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button - Multiply">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="binaryOperationButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="asW-lG-HhA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efN-4F-C09" userLabel="Button-Substraction">
-                                <rect key="frame" x="237.5" y="316" width="69.5" height="75"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="-">
+                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efN-4F-C09" userLabel="Button-Substraction">
+                                <rect key="frame" x="237" y="315.5" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button - Minus">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="binaryOperationButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="02z-ab-cvN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orq-Ku-HTv" userLabel="Button-Addition">
-                                <rect key="frame" x="237.5" y="396" width="69.5" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="+">
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orq-Ku-HTv" userLabel="Button-Addition">
+                                <rect key="frame" x="237" y="395" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button - Little Plus">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="binaryOperationButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="zTS-sr-iqB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hja-FG-jXN" userLabel="Button-Dot">
-                                <rect key="frame" x="162" y="475.5" width="70.5" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title=".">
+                            <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hja-FG-jXN" userLabel="Button-Dot">
+                                <rect key="frame" x="162" y="474.5" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button - Dot">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="numericButtonPushed:" destination="0Zc-nN-JDe" eventType="touchUpInside" id="ZEN-uv-7pJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnv-yk-2Ic" userLabel="Button-Equal">
-                                <rect key="frame" x="237.5" y="475.5" width="69.5" height="74.5"/>
-                                <color key="backgroundColor" red="0.31414726380000002" green="0.42522418499999998" blue="0.89922237400000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <state key="normal" title="=">
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnv-yk-2Ic" userLabel="Button-Equal">
+                                <rect key="frame" x="237" y="474.5" width="70" height="74.5"/>
+                                <state key="normal" backgroundImage="Button - Little Equal Sign">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -298,7 +260,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.22352941176470587" green="0.36862745098039218" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2ex-Zz-U7V" firstAttribute="height" secondItem="TDM-7Y-5XM" secondAttribute="height" id="0J5-4p-rUS"/>
                             <constraint firstItem="Wnv-yk-2Ic" firstAttribute="top" secondItem="orq-Ku-HTv" secondAttribute="bottom" constant="5" id="0Qb-6Y-tTq">
@@ -565,10 +527,11 @@ Analia Longhi
 Centennial College
 2017</string>
                                         <fontDescription key="fontDescription" name="Automatica-BRK-" family="Automatica (BRK)" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.22352941176470587" green="0.36862745098039218" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="x1k-bD-6uq" firstAttribute="leading" secondItem="KNt-18-oIt" secondAttribute="leading" constant="21" id="F6s-Ol-DhV"/>
                                     <constraint firstItem="x1k-bD-6uq" firstAttribute="centerX" secondItem="KNt-18-oIt" secondAttribute="centerX" id="H3B-UO-iv5"/>
@@ -597,6 +560,25 @@ Centennial College
         </scene>
     </scenes>
     <resources>
+        <image name="Button - ChangeSIgn" width="89" height="89"/>
+        <image name="Button - Clear" width="88" height="89"/>
+        <image name="Button - Divide" width="89" height="89"/>
+        <image name="Button - Dot" width="94" height="94"/>
+        <image name="Button - Little Equal Sign" width="88" height="88"/>
+        <image name="Button - Little Plus" width="89" height="89"/>
+        <image name="Button - Minus" width="89" height="89"/>
+        <image name="Button - Multiply" width="89" height="89"/>
+        <image name="Button - Percentage" width="89" height="89"/>
+        <image name="Button 0" width="181" height="94"/>
+        <image name="Button 1" width="94" height="94"/>
+        <image name="Button 2" width="93" height="94"/>
+        <image name="Button 3" width="94" height="94"/>
+        <image name="Button 4" width="94" height="94"/>
+        <image name="Button 5" width="93" height="94"/>
+        <image name="Button 6" width="94" height="94"/>
+        <image name="Button 7" width="94" height="94"/>
+        <image name="Button 8" width="93" height="94"/>
+        <image name="Button 9" width="94" height="94"/>
         <image name="Icon - Menu" width="28" height="21"/>
         <image name="Icon-Back" width="355" height="277"/>
     </resources>
