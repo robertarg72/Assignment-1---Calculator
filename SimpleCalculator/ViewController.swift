@@ -17,25 +17,51 @@ class ViewController: UIViewController {
     // GLOBAL VARIABLES
     // =========================================================================
     
-    // Concatenating input number to the display will use a state machine logic
+    // Showing numbers in the display will use a state machine logic
     enum State {
         case Initial
         case IntegerPart
         case FractionalPart
+        case OperationInProgress
     }
     var inputState: State = .Initial
     
     // All chars used to form a number are categorized in 3 types to work with the state machine
-    enum NumericInputType {
+    enum InputType {
         case Zero
         case DigitOnetoNine
         case Dot
+        case Equal
+        case Addition
+        case Substraction
+        case Multiplication
+        case Division
+        case Percentage
+        case ChangeSign
+        case Clear
     }
     
-    // Constante values to be used in the logic
+    // Stack for managing priorities and execution of operations
+    let operationStack: Stack = Stack()
+    
+    // Precedence of operators
+    // The greater the value the more priority the operatior has
+    enum Precendence: Int{
+        case None = 0
+        case Addition           //Includes Substraction
+        case Multplication      //Includes Division and Module
+        case Exponent           //Includes Root
+        case Unary              //Like +/- or %
+        case Parentheses
+        case Functions
+        case SpecialConstants   //Like e, PI, G, etc
+    }
+    
+    // Various constante values to be used in the logic
     let dotCharAscii = 46
     let displayMaxLengthPortrait = 10
     let initialStringOnDisplay = "0"
+    let errorMessage = "Error"
 
     
     // OUTLETS
@@ -62,32 +88,76 @@ class ViewController: UIViewController {
     // ACTIONS
     // =========================================================================
     
+    // Run logic based on a stack to prioritize execution of binary operations
+    @IBAction func binaryOperationButtonPushed(_ sender: UIButton) {
+        inputState = .OperationInProgress
+        let currentOperation: InputType = getInputType(sender.tag)
+        let currentOperationAsString: String = String(describing: currentOperation)
+        
+        let currentOperationPrecedence = getPrecedence(currentOperationAsString)
+        var operationInStackPrecedence = getPrecedence(operationStack.peak())
+        
+        if currentOperationPrecedence.rawValue > operationInStackPrecedence.rawValue {
+            operationStack.push(displayText.text!)
+            operationStack.push(currentOperationAsString)
+            return
+        }
+        
+        var secondOperand: String = displayText.text!
+        
+        var result: String = ""
+        while currentOperationPrecedence.rawValue <= operationInStackPrecedence.rawValue {
+            let operatorToExecuteFromStack: String = operationStack.pop()!
+            let firstOperand: String = operationStack.pop()!
+            
+            result = getBinaryOperationResult(firstOperand, secondOperand, operatorToExecuteFromStack)
+            if result == errorMessage {
+                //operationStack = Stack()
+                displayText.text = errorMessage
+                return
+            }
+            secondOperand = result
+            operationInStackPrecedence = getPrecedence(operationStack.peak())
+        }
+        displayText.text = result
+        operationStack.push(result)
+        operationStack.push(currentOperationAsString)
+        
+    }
+    
+    
     // Clear the display by showing the initial string "0"
     @IBAction func clearButtonPushed(_ sender: UIButton) {
+        inputState = .Initial
         displayText.text = initialStringOnDisplay
     }
     
     // Run state machine logic each time a numeric button is pushed, including "."
     @IBAction func numericButtonPushed(_ sender: UIButton) {
+        
+        if inputState == State.OperationInProgress {
+            inputState = .Initial
+            displayText.text = initialStringOnDisplay
+        }
         let input = sender.tag
         let inputType = getInputType(input)
         let inputString = String(input)
         
         switch inputState {
             case .Initial:
-                if inputType == NumericInputType.DigitOnetoNine {
+                if inputType == InputType.DigitOnetoNine {
                     if displayText.text == initialStringOnDisplay {
                         displayText.text = ""
                     }
                     concatDigitAndContinueProcessingIntegerPart(inputString)
                 }
-                if inputType == NumericInputType.Dot {
+                if inputType == InputType.Dot {
                     concatDigitAndContinueProcessingFractionalPart(getCharFromAsciiValue(dotCharAscii))
                 }
                 return
             
             case .IntegerPart:
-                if inputType == NumericInputType.Dot {
+                if inputType == InputType.Dot {
                     concatDigitAndContinueProcessingFractionalPart(getCharFromAsciiValue(dotCharAscii))
                 }
                 else {
@@ -96,9 +166,11 @@ class ViewController: UIViewController {
                 return
             
             case .FractionalPart:
-                if inputType == NumericInputType.Zero || inputType == NumericInputType.DigitOnetoNine {
+                if inputType == InputType.Zero || inputType == InputType.DigitOnetoNine {
                     concatDigit(String(input))
                 }
+                return
+            default:
                 return
         }
         
@@ -106,6 +178,40 @@ class ViewController: UIViewController {
     
     // Private methods
     // =========================================================================
+    
+    private func getBinaryOperationResult(_ firstOperand: String, _ secondOperand: String, _ operation: String) -> String {
+        
+        switch operation {
+        case "Addition":
+            return String( Float(firstOperand)! + Float(secondOperand)! )
+        case "Substraction":
+            return String( Float(firstOperand)! - Float(secondOperand)! )
+        case "Multiplication":
+            return String( Float(firstOperand)! * Float(secondOperand)! )
+        case "Division":
+            if secondOperand == "0" {
+                return errorMessage
+            }
+            return String( Float(firstOperand)! / Float(secondOperand)! )
+        default:
+            return initialStringOnDisplay
+        }
+        
+    }
+    
+    private func getPrecedence(_ value:String?) -> Precendence {
+        
+        switch value {
+        case "Addition"?, "Substraction"?:
+            return .Addition
+        case "Multiplication"?, "Division"?:
+            return .Multplication
+        case "Percentage"?, "ChangeSign"?:
+            return .Unary
+        default:
+            return .None
+        }
+    }
     
     private func concatDigitAndContinueProcessingFractionalPart(_ input:String) {
         concatDigit(input)
@@ -123,14 +229,30 @@ class ViewController: UIViewController {
         }
     }
     
-    private func getInputType(_ input: Int) -> NumericInputType {
+    private func getInputType(_ input: Int) -> InputType {
         switch input {
         case -1:
-            return NumericInputType.Dot
+            return .Dot
         case 0:
-            return NumericInputType.Zero
+            return .Zero
+        case 10:
+            return .Equal
+        case 11:
+            return .Addition
+        case 12:
+            return .Substraction
+        case 13:
+            return .Multiplication
+        case 14:
+            return .Division
+        case 15:
+            return .Percentage
+        case 16:
+            return .ChangeSign
+        case 17:
+            return .Clear
         default:
-            return NumericInputType.DigitOnetoNine
+            return .DigitOnetoNine
         }
     }
     
