@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         case FractionalPart
         case BinaryOperationInProgress
         case ChangeSignOperationInProgress
+        case PercentageOperationInProgress
         case EqualOperationExecuted
     }
     var inputState: State = .Initial
@@ -157,6 +158,8 @@ class ViewController: UIViewController {
                         showInDisplay(String(percentage))
                     }
                 }
+                inputState = .PercentageOperationInProgress
+                return
             default:
                 return
         }
@@ -195,7 +198,7 @@ class ViewController: UIViewController {
     // Run state machine logic each time a numeric button is pushed, including "."
     @IBAction func numericButtonPushed(_ sender: UIButton) {
         
-        if inputState == .BinaryOperationInProgress || inputState == .EqualOperationExecuted {
+        if inputState == .BinaryOperationInProgress || inputState == .EqualOperationExecuted || inputState == .PercentageOperationInProgress {
             inputState = .Initial
             showInDisplay(initialStringOnDisplay)
         }
