@@ -4,7 +4,7 @@
  * Name: Robert Argume
  * StudentID: 300949529
  * Description: Simple Calculator App developded for Assignment 1
- * Version: 0.5 - Added logic to update display each time a numeric button is pushed
+ * Version: 0.6 - Added logic to update display when button Equal or Clear are tapped
  * Notes:
  *   - UI design/development using iPhone SE, then scaled up to larger screens
  *   - Some constraints warning are shown in the storyboard, but the simulator renders the App correctly
@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     // GLOBAL VARIABLES
     // =========================================================================
     
-    // Showing numbers in the display will use a state machine logic
+    // Processing number buttons to concatenate and form a single operand will be done by a state machine logic
     enum State {
         case Initial
         case IntegerPart
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
     var inputState: State = .Initial
     
-    // All chars used to form a number are categorized in 3 types to work with the state machine
+    // All buttons used to form a number are categorized in 3 types to work with the state machine
     enum InputType {
         case Zero
         case DigitOnetoNine
@@ -44,6 +44,12 @@ class ViewController: UIViewController {
     // Stack for managing priorities and execution of operations
     let operationStack: Stack = Stack()
     
+    // Store the last operand used as well as last operation
+    // There are special cases where last second operand is not what the display shows
+    // For example, when performing some operations, and then tapping "=" or any operator many times in a row
+    var lastSecondOperand: String?
+    var lastBinaryOperation: String?
+    
     // Precedence of operators
     // The greater the value the more priority the operatior has
     enum Precendence: Int{
@@ -57,7 +63,7 @@ class ViewController: UIViewController {
         case SpecialConstants   //Like e, PI, G, etc
     }
     
-    // Various constante values to be used in the logic
+    // Various constant values to be used in this App
     let dotCharAscii = 46
     let displayMaxLengthPortrait = 10
     let initialStringOnDisplay = "0"
@@ -67,7 +73,7 @@ class ViewController: UIViewController {
     // OUTLETS
     // =========================================================================
     
-    // Connects to the text label control in the storyboard to show the input number
+    // Connects to the text label control in the storyboard to show the input number and results
     @IBOutlet weak var displayText: UILabel!
     
     
@@ -77,7 +83,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        resetOperationsEnvironment()
         displayText.text = initialStringOnDisplay
+        lastBinaryOperation = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,48 +96,54 @@ class ViewController: UIViewController {
     // ACTIONS
     // =========================================================================
     
-    // Run logic based on a stack to prioritize execution of binary operations
+    // Logic for the Equal button
+    @IBAction func equalButtonPushed(_ sender: UIButton) {
+        // Previous operations were executed, and the stack is not empty. Let us execute all operations in the stack
+        if lastBinaryOperation != nil && !operationStack.isEmpty(){
+            displayText.text = solveOperationsDelayedInTheStack(.None, getPrecedence(operationStack.peak()), displayText.text!)
+            if displayText.text == errorMessage {
+                inputState = .Initial
+            }else {
+                inputState = .FractionalPart
+            }
+            return
+        }
+        
+        // Equal button was just tapped before, thus all operations in the stack were executed
+        // This means we should repeat last operation with last second operand
+        if lastBinaryOperation != nil && operationStack.isEmpty() {
+            displayText.text = getBinaryOperationResult(displayText.text!, lastSecondOperand!, lastBinaryOperation!)
+            return
+        }
+    }
+    
+    // Run binary operations logic
+    // Based on a stack structure to prioritize execution of binary operations
     @IBAction func binaryOperationButtonPushed(_ sender: UIButton) {
         inputState = .OperationInProgress
         let currentOperation: InputType = getInputType(sender.tag)
         let currentOperationAsString: String = String(describing: currentOperation)
         
         let currentOperationPrecedence = getPrecedence(currentOperationAsString)
-        var operationInStackPrecedence = getPrecedence(operationStack.peak())
+        let operationInStackPrecedence = getPrecedence(operationStack.peak())
         
         if currentOperationPrecedence.rawValue > operationInStackPrecedence.rawValue {
             operationStack.push(displayText.text!)
             operationStack.push(currentOperationAsString)
-            return
+            lastBinaryOperation = currentOperationAsString
         }
-        
-        var secondOperand: String = displayText.text!
-        
-        var result: String = ""
-        while currentOperationPrecedence.rawValue <= operationInStackPrecedence.rawValue {
-            let operatorToExecuteFromStack: String = operationStack.pop()!
-            let firstOperand: String = operationStack.pop()!
-            
-            result = getBinaryOperationResult(firstOperand, secondOperand, operatorToExecuteFromStack)
-            if result == errorMessage {
-                //operationStack = Stack()
-                displayText.text = errorMessage
-                return
-            }
-            secondOperand = result
-            operationInStackPrecedence = getPrecedence(operationStack.peak())
+        else {
+            displayText.text = solveOperationsDelayedInTheStack(currentOperationPrecedence, operationInStackPrecedence, displayText.text!)
+            operationStack.push(displayText.text!)
+            operationStack.push(currentOperationAsString)
         }
-        displayText.text = result
-        operationStack.push(result)
-        operationStack.push(currentOperationAsString)
-        
     }
-    
     
     // Clear the display by showing the initial string "0"
     @IBAction func clearButtonPushed(_ sender: UIButton) {
         inputState = .Initial
         displayText.text = initialStringOnDisplay
+        resetOperationsEnvironment()
     }
     
     // Run state machine logic each time a numeric button is pushed, including "."
@@ -146,12 +160,15 @@ class ViewController: UIViewController {
         switch inputState {
             case .Initial:
                 if inputType == InputType.DigitOnetoNine {
-                    if displayText.text == initialStringOnDisplay {
+                    if displayText.text == initialStringOnDisplay || displayText.text == errorMessage {
                         displayText.text = ""
                     }
                     concatDigitAndContinueProcessingIntegerPart(inputString)
                 }
                 if inputType == InputType.Dot {
+                    if displayText.text == errorMessage {
+                        displayText.text = "0"
+                    }
                     concatDigitAndContinueProcessingFractionalPart(getCharFromAsciiValue(dotCharAscii))
                 }
                 return
@@ -179,29 +196,59 @@ class ViewController: UIViewController {
     // Private methods
     // =========================================================================
     
-    private func getBinaryOperationResult(_ firstOperand: String, _ secondOperand: String, _ operation: String) -> String {
-        
-        switch operation {
-        case "Addition":
-            return String( Float(firstOperand)! + Float(secondOperand)! )
-        case "Substraction":
-            return String( Float(firstOperand)! - Float(secondOperand)! )
-        case "Multiplication":
-            return String( Float(firstOperand)! * Float(secondOperand)! )
-        case "Division":
-            if secondOperand == "0" {
-                return errorMessage
-            }
-            return String( Float(firstOperand)! / Float(secondOperand)! )
-        default:
-            return initialStringOnDisplay
-        }
-        
+    // Set calculation variables to their initial values
+    private func resetOperationsEnvironment () {
+        operationStack.flush()
+        //lastBinaryOperation = nil
+        lastSecondOperand = initialStringOnDisplay
+        inputState = .Initial
     }
     
-    private func getPrecedence(_ value:String?) -> Precendence {
+    // Executes binary operations
+    private func getBinaryOperationResult(_ firstOperand: String, _ secondOperand: String, _ operation: String) -> String {
+        if Float(firstOperand) == nil || Float(secondOperand) == nil || (operation == "Division" && secondOperand == "0") {
+            resetOperationsEnvironment()
+            return  errorMessage
+        }
         
-        switch value {
+        lastBinaryOperation = operation
+        switch operation {
+            case "Addition":
+                return String( Float(firstOperand)! + Float(secondOperand)! )
+            case "Substraction":
+                return String( Float(firstOperand)! - Float(secondOperand)! )
+            case "Multiplication":
+                return String( Float(firstOperand)! * Float(secondOperand)! )
+            case "Division":
+                return String( Float(firstOperand)! / Float(secondOperand)! )
+            default:
+                return initialStringOnDisplay
+        }
+    }
+    
+    // Calculate operations stored in the stack acording to precedence
+    func solveOperationsDelayedInTheStack(_ currentOperationPrecedence: Precendence, _ stackPrecedence: Precendence, _ currentSecondOperand: String) -> String {
+        var secondOperand = currentSecondOperand
+        var currentStackPrecedence: Precendence = stackPrecedence
+        var result: String = ""
+        
+        while result != errorMessage && !operationStack.isEmpty() &&
+            currentOperationPrecedence.rawValue <= currentStackPrecedence.rawValue {
+                let operatorToExecuteFromStack: String = operationStack.pop()!
+                let firstOperand: String = operationStack.pop()!
+                lastSecondOperand = secondOperand
+                
+                result = getBinaryOperationResult(firstOperand, secondOperand, operatorToExecuteFromStack)
+                secondOperand = result
+                currentStackPrecedence = getPrecedence(operationStack.peak())
+        }
+        return result
+    }
+    
+    // Return a math operation precedence
+    // This way we can compare operations and give priority to execute them
+    private func getPrecedence(_ operation:String?) -> Precendence {
+        switch operation {
         case "Addition"?, "Substraction"?:
             return .Addition
         case "Multiplication"?, "Division"?:
@@ -213,22 +260,28 @@ class ViewController: UIViewController {
         }
     }
     
+    // Concatenate char to display
+    // Set state to FractionalPart for the state machine logic that process operands
     private func concatDigitAndContinueProcessingFractionalPart(_ input:String) {
         concatDigit(input)
         inputState = .FractionalPart
     }
     
+    // Concatenate char to display
+    // Set state to IntegerPart for the state machine logic that process operands
     private func concatDigitAndContinueProcessingIntegerPart(_ input:String) {
         concatDigit(input)
         inputState = .IntegerPart
     }
     
+    // Concatenate a char to the current value of the display
     private func concatDigit(_ input:String) {
         if (displayText.text?.count)! < displayMaxLengthPortrait {
                 displayText.text?.append(input)
         }
     }
     
+    // Return InputType according to the TAG value set on every button in the App
     private func getInputType(_ input: Int) -> InputType {
         switch input {
         case -1:
@@ -256,9 +309,9 @@ class ViewController: UIViewController {
         }
     }
     
+    // Convert int to UnicodeScalar, and then to a Character.
+    // Adapted from https://www.dotnetperls.com/convert-int-character-swift web site
     private func getCharFromAsciiValue(_ value: Int) -> String {
-        // Convert int to UnicodeScalar, and then to a Character.
-        // Adapted from https://www.dotnetperls.com/convert-int-character-swift web site
         return String(Character(UnicodeScalar(value)!))
     }
     
