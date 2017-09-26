@@ -4,7 +4,7 @@
  * Name: Robert Argume
  * StudentID: 300949529
  * Description: Simple Calculator App developded for Assignment 1
- * Version: 0.8 - Added App Icon and Launch Screen
+ * Version: 0.85 - Added About Screen
  * Notes:
  *   - UI design/development using iPhone SE, then scaled up to larger screens
  *   - Some constraints warning are shown in the storyboard, but the simulator renders the App correctly
