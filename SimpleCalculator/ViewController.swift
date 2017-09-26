@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         case FractionalPart
         case BinaryOperationInProgress
         case ChangeSignOperationInProgress
+        case EqualOperationExecuted
     }
     var inputState: State = .Initial
     
@@ -85,8 +86,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resetOperationsEnvironment()
-        displayText.text = initialStringOnDisplay
         lastBinaryOperation = nil
+        showInDisplay(initialStringOnDisplay)
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,21 +100,18 @@ class ViewController: UIViewController {
     
     // Logic for the Equal button
     @IBAction func equalButtonPushed(_ sender: UIButton) {
+        inputState = .EqualOperationExecuted
+        
         // Previous operations were executed, and the stack is not empty. Let us execute all operations in the stack
         if lastBinaryOperation != nil && !operationStack.isEmpty(){
-            displayText.text = solveOperationsDelayedInTheStack(.None, getPrecedence(operationStack.peak()), displayText.text!)
-            if displayText.text == errorMessage {
-                inputState = .Initial
-            }else {
-                inputState = .FractionalPart
-            }
+            showInDisplay(solveOperationsDelayedInTheStack(.None, getPrecedence(operationStack.peak()), displayText.text!))
             return
         }
         
         // Equal button was just tapped before, thus all operations in the stack were executed
         // This means we should repeat last operation with last second operand
         if lastBinaryOperation != nil && operationStack.isEmpty() {
-            displayText.text = getBinaryOperationResult(displayText.text!, lastSecondOperand!, lastBinaryOperation!)
+            showInDisplay(getBinaryOperationResult(displayText.text!, lastSecondOperand!, lastBinaryOperation!))
             return
         }
     }
@@ -128,21 +126,22 @@ class ViewController: UIViewController {
                 if inputState != .BinaryOperationInProgress {
                     if displayText.text!.characters.first == "-" {
                         let index = displayText.text!.index(displayText.text!.startIndex, offsetBy: 1)
-                        displayText.text! = displayText.text!.substring(from: index)
+                        showInDisplay(displayText.text!.substring(from: index))
                     }
                     else {
-                        displayText.text! = "-" + displayText.text!
+                        showInDisplay("-" + displayText.text!)
                     }
                 }
                 else {
-                    displayText.text = "-0"
+                    showInDisplay("-0")
                     inputState = .ChangeSignOperationInProgress
                 }
                 return
             case .Percentage:
                 let percentage: Float = getPercentageValue(displayText.text!)
                 if operationStack.isEmpty() {
-                    displayText.text! = String(percentage)
+                    showInDisplay(String(percentage))
+                    lastBinaryOperation = nil
                 }
                 else {
                     let operationInStack = operationStack.pop()
@@ -152,19 +151,15 @@ class ViewController: UIViewController {
                         return
                     }
                     if operationInStack == "Addition" || operationInStack == "Substraction" {
-                        displayText.text! = String(Float(previousOperand!)! * percentage)
+                        showInDisplay(String(Float(previousOperand!)! * percentage))
                     }
                     else {
-                        displayText.text! = String(percentage)
+                        showInDisplay(String(percentage))
                     }
                 }
             default:
                 return
         }
-    }
-
-    private func getPercentageValue(_ value: String?) -> Float{
-        return Float(value!)! / 100
     }
     
     // Run binary operations logic
@@ -183,8 +178,9 @@ class ViewController: UIViewController {
             lastBinaryOperation = currentOperationAsString
         }
         else {
-            displayText.text = solveOperationsDelayedInTheStack(currentOperationPrecedence, operationInStackPrecedence, displayText.text!)
-            operationStack.push(displayText.text!)
+            let result = solveOperationsDelayedInTheStack(currentOperationPrecedence, operationInStackPrecedence, displayText.text!)
+            showInDisplay(result)
+            operationStack.push(result)
             operationStack.push(currentOperationAsString)
         }
     }
@@ -192,20 +188,20 @@ class ViewController: UIViewController {
     // Clear the display by showing the initial string "0"
     @IBAction func clearButtonPushed(_ sender: UIButton) {
         inputState = .Initial
-        displayText.text = initialStringOnDisplay
+        showInDisplay(initialStringOnDisplay)
         resetOperationsEnvironment()
     }
     
     // Run state machine logic each time a numeric button is pushed, including "."
     @IBAction func numericButtonPushed(_ sender: UIButton) {
         
-        if inputState == State.BinaryOperationInProgress {
+        if inputState == .BinaryOperationInProgress || inputState == .EqualOperationExecuted {
             inputState = .Initial
-            displayText.text = initialStringOnDisplay
+            showInDisplay(initialStringOnDisplay)
         }
         else if inputState == .ChangeSignOperationInProgress {
             inputState = .Initial
-            displayText.text = "-"
+            showInDisplay("-")
         }
         
         let input = sender.tag
@@ -216,13 +212,13 @@ class ViewController: UIViewController {
             case .Initial:
                 if inputType == InputType.DigitOnetoNine {
                     if displayText.text == initialStringOnDisplay || displayText.text == errorMessage {
-                        displayText.text = ""
+                        showInDisplay("")
                     }
                     concatDigitAndContinueProcessingIntegerPart(inputString)
                 }
                 if inputType == InputType.Dot {
                     if displayText.text == errorMessage {
-                        displayText.text = "0"
+                        showInDisplay("0")
                     }
                     concatDigitAndContinueProcessingFractionalPart(getCharFromAsciiValue(dotCharAscii))
                 }
@@ -250,6 +246,15 @@ class ViewController: UIViewController {
     
     // Private methods
     // =========================================================================
+    
+    // Updates the string shown in the display text label
+    private func showInDisplay(_ value: String) {
+        displayText.text! = value
+    }
+    
+    private func getPercentageValue(_ value: String?) -> Float{
+        return Float(value!)! / 100
+    }
     
     // Set calculation variables to their initial values
     private func resetOperationsEnvironment () {
