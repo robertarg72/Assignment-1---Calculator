@@ -4,7 +4,7 @@
  * Name: Robert Argume
  * StudentID: 300949529
  * Description: Simple Calculator App developded for Assignment 1
- * Version: 0.7 - Added logic for "+/-" button
+ * Version: 0.75 - Added logic for Percentage Button
  * Notes:
  *   - UI design/development using iPhone SE, then scaled up to larger screens
  *   - Some constraints warning are shown in the storyboard, but the simulator renders the App correctly
@@ -119,7 +119,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func unaryOperationButtonPushed(_ sender: UIButton) {
-        if displayText.text == errorMessage {
+        if displayText.text == nil || displayText.text == errorMessage {
             return
         }
         
@@ -139,9 +139,32 @@ class ViewController: UIViewController {
                     inputState = .ChangeSignOperationInProgress
                 }
                 return
+            case .Percentage:
+                let percentage: Float = getPercentageValue(displayText.text!)
+                if operationStack.isEmpty() {
+                    displayText.text! = String(percentage)
+                }
+                else {
+                    let operationInStack = operationStack.pop()
+                    let previousOperand = operationStack.peak()
+                    operationStack.push(operationInStack!)
+                    if previousOperand == errorMessage {
+                        return
+                    }
+                    if operationInStack == "Addition" || operationInStack == "Substraction" {
+                        displayText.text! = String(Float(previousOperand!)! * percentage)
+                    }
+                    else {
+                        displayText.text! = String(percentage)
+                    }
+                }
             default:
                 return
         }
+    }
+
+    private func getPercentageValue(_ value: String?) -> Float{
+        return Float(value!)! / 100
     }
     
     // Run binary operations logic
