@@ -3,6 +3,7 @@
  * Project: SimpleCalculator
  * Name: Robert Argume
  * StudentID: 300949529
+ * Date: Sep 26, 2017
  * Description: Simple Calculator App developded for Assignment 1
  */
 import UIKit

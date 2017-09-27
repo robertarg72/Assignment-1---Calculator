@@ -3,6 +3,7 @@
  * Project: SimpleCalculator
  * Name: Robert Argume
  * StudentID: 300949529
+ * Date: Sep 26, 2017
  * Description: Simple Calculator App developded for Assignment 1
  * Version: 0.9 - Added images for buttons and set a background color
  * Notes:
@@ -98,6 +99,7 @@ class ViewController: UIViewController {
         showInDisplay(initialStringOnDisplay)
     }
     
+    // This method detects the change of orientation and set a different max length for the display
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         displayMaxLength = getDisplayMaxLength()
@@ -112,6 +114,8 @@ class ViewController: UIViewController {
     // =========================================================================
     
     // Logic for the Equal button
+    // There are 2 cases: Hit the button when there were previous operations
+    // Or hit the button after all pending operations were executed
     @IBAction func equalButtonPushed(_ sender: UIButton) {
         inputState = .EqualOperationExecuted
         
@@ -129,6 +133,9 @@ class ViewController: UIViewController {
         }
     }
     
+    // Logic for the Unary operations. Percentage and +/- buttons
+    // Functionality for using Percentage after a sum or substraction is implemented
+    // We detect for these 2 operations, to calculate percentage and add it to the initial value
     @IBAction func unaryOperationButtonPushed(_ sender: UIButton) {
         if displayText.text == nil || displayText.text == errorMessage {
             return
@@ -208,6 +215,10 @@ class ViewController: UIViewController {
     }
     
     // Run state machine logic each time a numeric button is pushed, including "."
+    // There are 3 states used for building an operand by concatenating the user input:
+    // The initial state
+    // State to indicate the integer part of the number is being processed
+    // State to indicate the fractional part is being processed
     @IBAction func numericButtonPushed(_ sender: UIButton) {
         
         if inputState == .BinaryOperationInProgress || inputState == .EqualOperationExecuted || inputState == .PercentageOperationInProgress {
@@ -283,6 +294,7 @@ class ViewController: UIViewController {
         displayText.text! = valueToShow
     }
     
+    // Divide a number by 100 to get the percentage of the value compared to 100
     private func getPercentageValue(_ value: String?) -> Float{
         return Float(value!)! / 100
     }
@@ -295,6 +307,7 @@ class ViewController: UIViewController {
     }
     
     // Executes binary operations
+    // Apply every operation to 2 operands
     private func getBinaryOperationResult(_ firstOperand: String, _ secondOperand: String, _ operation: String) -> String {
         if Float(firstOperand) == nil || Float(secondOperand) == nil || (operation == "Division" && secondOperand == "0") {
             resetOperationsEnvironment()

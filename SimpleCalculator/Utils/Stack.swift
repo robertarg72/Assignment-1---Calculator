@@ -3,6 +3,7 @@
  * Project: SimpleCalculator
  * Name: Robert Argume
  * StudentID: 300949529
+ * Date: Sep 26, 2017
  * Description:
  * Implementation of a Stack Structure based on linked lists
  * For storing operands and operations as strings
@@ -11,6 +12,8 @@
  */
 import Foundation
 
+// Node.class
+// This is the basic structure to implement a list as the base structure for the Stack
 class Node {
     let value: String
     var next: Node?
@@ -19,6 +22,10 @@ class Node {
     }
 }
 
+// Stack.class
+// This is the Stack implementation based on Node class
+// It creates a list to manage the elements added to the Stack
+// It stores strings. Only methods needed in the project were implemented
 class Stack {
     var top: Node?
     
