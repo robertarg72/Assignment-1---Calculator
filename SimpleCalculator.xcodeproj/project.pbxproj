@@ -14,6 +14,8 @@
 		E1B40B1C1F732A960044C3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B40B1B1F732A960044C3EA /* ViewController.swift */; };
 		E1B40B211F732A960044C3EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1B40B201F732A960044C3EA /* Assets.xcassets */; };
 		E1B40B241F732A960044C3EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B40B221F732A960044C3EA /* LaunchScreen.storyboard */; };
+		E1C010A11F7B51CC00E35E57 /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = E1C0109F1F7B4E8400E35E57 /* Pop.aiff */; };
+		E1C010A51F7B562F00E35E57 /* Intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E1C010A41F7B561F00E35E57 /* Intro.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		E1B40B201F732A960044C3EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1B40B231F732A960044C3EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1B40B251F732A960044C3EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1C0109F1F7B4E8400E35E57 /* Pop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Pop.aiff; sourceTree = "<group>"; };
+		E1C010A41F7B561F00E35E57 /* Intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Intro.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		E1B40B181F732A960044C3EA /* SimpleCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				E1C0109E1F7B4E6800E35E57 /* Sounds */,
 				E1A7DD571F7992D300EEF293 /* Utils */,
 				E17F4DDF1F75BDB900DE71B4 /* Fonts */,
 				E1B40B191F732A960044C3EA /* AppDelegate.swift */,
@@ -84,6 +89,15 @@
 				E1B40B251F732A960044C3EA /* Info.plist */,
 			);
 			path = SimpleCalculator;
+			sourceTree = "<group>";
+		};
+		E1C0109E1F7B4E6800E35E57 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E1C010A41F7B561F00E35E57 /* Intro.mp3 */,
+				E1C0109F1F7B4E8400E35E57 /* Pop.aiff */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +160,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1C010A51F7B562F00E35E57 /* Intro.mp3 in Resources */,
+				E1C010A11F7B51CC00E35E57 /* Pop.aiff in Resources */,
 				E15476341F78CDD000C65F6F /* Main.storyboard in Resources */,
 				E17F4DE11F75BEED00DE71B4 /* Automatica-BRK.ttf in Resources */,
 				E1B40B241F732A960044C3EA /* LaunchScreen.storyboard in Resources */,

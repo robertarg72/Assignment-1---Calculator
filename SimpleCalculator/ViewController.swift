@@ -5,7 +5,7 @@
  * StudentID: 300949529
  * Date: Sep 26, 2017
  * Description: Simple Calculator App developded for Assignment 1
- * Version: 0.9 - Added images for buttons and set a background color
+ * Version: 0.95 - Added sound for application launch and buttons
  * Notes:
  *   - UI design/development using iPhone SE, then scaled up to larger screens
  *   - Some constraints warning are shown in the storyboard, but the simulator renders the App correctly
@@ -13,11 +13,15 @@
  */
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
     // GLOBAL VARIABLES
     // =========================================================================
+    
+    // Variable added to initialize audio in the App
+    var audioPlayer = AVAudioPlayer()
     
     // Processing number buttons to concatenate and form a single operand will be done by a state machine logic
     enum State {
@@ -117,6 +121,9 @@ class ViewController: UIViewController {
     // There are 2 cases: Hit the button when there were previous operations
     // Or hit the button after all pending operations were executed
     @IBAction func equalButtonPushed(_ sender: UIButton) {
+        // Sound when push the button
+        playSound(file: "Pop", ext: "aiff")
+        
         inputState = .EqualOperationExecuted
         
         // Previous operations were executed, and the stack is not empty. Let us execute all operations in the stack
@@ -137,6 +144,9 @@ class ViewController: UIViewController {
     // Functionality for using Percentage after a sum or substraction is implemented
     // We detect for these 2 operations, to calculate percentage and add it to the initial value
     @IBAction func unaryOperationButtonPushed(_ sender: UIButton) {
+        // Sound when push the button
+        playSound(file: "Pop", ext: "aiff")
+        
         if displayText.text == nil || displayText.text == errorMessage {
             return
         }
@@ -187,6 +197,9 @@ class ViewController: UIViewController {
     // Run binary operations logic
     // Based on a stack structure to prioritize execution of binary operations
     @IBAction func binaryOperationButtonPushed(_ sender: UIButton) {
+        // Sound when push the button
+        playSound(file: "Pop", ext: "aiff")
+        
         inputState = .BinaryOperationInProgress
         let currentOperation: InputType = getInputType(sender.tag)
         let currentOperationAsString: String = String(describing: currentOperation)
@@ -209,6 +222,9 @@ class ViewController: UIViewController {
     
     // Clear the display by showing the initial string "0"
     @IBAction func clearButtonPushed(_ sender: UIButton) {
+        // Sound when push the button
+        playSound(file: "Pop", ext: "aiff")
+        
         inputState = .Initial
         showInDisplay(initialStringOnDisplay)
         resetOperationsEnvironment()
@@ -220,6 +236,8 @@ class ViewController: UIViewController {
     // State to indicate the integer part of the number is being processed
     // State to indicate the fractional part is being processed
     @IBAction func numericButtonPushed(_ sender: UIButton) {
+        // Sound when push the button
+        playSound(file: "Pop", ext: "aiff")
         
         if inputState == .BinaryOperationInProgress || inputState == .EqualOperationExecuted || inputState == .PercentageOperationInProgress {
             inputState = .Initial
@@ -416,6 +434,20 @@ class ViewController: UIViewController {
     // Adapted from https://www.dotnetperls.com/convert-int-character-swift web site
     private func getCharFromAsciiValue(_ value: Int) -> String {
         return String(Character(UnicodeScalar(value)!))
+    }
+    
+    // Play a sound from a file inside the project
+    // To be reused anywhere in the App
+    // From: https://stackoverflow.com/questions/43715285/xcode-swift-adding-sound-effects-to-launch-screen
+    func playSound(file:String, ext:String) -> Void {
+        do {
+            let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: file, ofType: ext)!)
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+        } catch let error {
+            NSLog(error.localizedDescription)
+        }
     }
     
 }
