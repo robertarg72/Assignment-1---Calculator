@@ -3,9 +3,9 @@
  * Project: SimpleCalculator
  * Name: Robert Argume
  * StudentID: 300949529
- * Date: Sep 26, 2017
+ * Date: Sep 29, 2017
  * Description: Simple Calculator App developded for Assignment 1
- * Version: 0.95 - Added sound for application launch and buttons
+ * Version: 0.96 - Moved audio playing method to a separated swift file
  * Notes:
  *   - UI design/development using iPhone SE, then scaled up to larger screens
  *   - Some constraints warning are shown in the storyboard, but the simulator renders the App correctly
@@ -19,10 +19,7 @@ class ViewController: UIViewController {
     
     // GLOBAL VARIABLES
     // =========================================================================
-    
-    // Variable added to initialize audio in the App
-    var audioPlayer = AVAudioPlayer()
-    
+   
     // Processing number buttons to concatenate and form a single operand will be done by a state machine logic
     enum State {
         case Initial
@@ -434,20 +431,6 @@ class ViewController: UIViewController {
     // Adapted from https://www.dotnetperls.com/convert-int-character-swift web site
     private func getCharFromAsciiValue(_ value: Int) -> String {
         return String(Character(UnicodeScalar(value)!))
-    }
-    
-    // Play a sound from a file inside the project
-    // To be reused anywhere in the App
-    // From: https://stackoverflow.com/questions/43715285/xcode-swift-adding-sound-effects-to-launch-screen
-    func playSound(file:String, ext:String) -> Void {
-        do {
-            let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: file, ofType: ext)!)
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
-        } catch let error {
-            NSLog(error.localizedDescription)
-        }
     }
     
 }

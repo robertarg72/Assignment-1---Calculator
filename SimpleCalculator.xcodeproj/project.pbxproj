@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E137F94E1F7F133F00207C45 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137F94D1F7F133F00207C45 /* Audio.swift */; };
 		E15476341F78CDD000C65F6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B40B1D1F732A960044C3EA /* Main.storyboard */; };
 		E17F4DE11F75BEED00DE71B4 /* Automatica-BRK.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E17F4DE01F75BE0900DE71B4 /* Automatica-BRK.ttf */; };
 		E1A7DD591F7992F400EEF293 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7DD581F7992F400EEF293 /* Stack.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E137F94D1F7F133F00207C45 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		E17F4DE01F75BE0900DE71B4 /* Automatica-BRK.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Automatica-BRK.ttf"; sourceTree = "<group>"; };
 		E1A7DD581F7992F400EEF293 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		E1B40B161F732A960044C3EA /* SimpleCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A7DD581F7992F400EEF293 /* Stack.swift */,
+				E137F94D1F7F133F00207C45 /* Audio.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E137F94E1F7F133F00207C45 /* Audio.swift in Sources */,
 				E1B40B1C1F732A960044C3EA /* ViewController.swift in Sources */,
 				E1A7DD591F7992F400EEF293 /* Stack.swift in Sources */,
 				E1B40B1A1F732A960044C3EA /* AppDelegate.swift in Sources */,
