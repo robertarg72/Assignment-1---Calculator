@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E137AF7D1F7F245700487637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1B40B201F732A960044C3EA /* Assets.xcassets */; };
 		E137F94E1F7F133F00207C45 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137F94D1F7F133F00207C45 /* Audio.swift */; };
 		E15476341F78CDD000C65F6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B40B1D1F732A960044C3EA /* Main.storyboard */; };
 		E17F4DE11F75BEED00DE71B4 /* Automatica-BRK.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E17F4DE01F75BE0900DE71B4 /* Automatica-BRK.ttf */; };
 		E1A7DD591F7992F400EEF293 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7DD581F7992F400EEF293 /* Stack.swift */; };
 		E1B40B1A1F732A960044C3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B40B191F732A960044C3EA /* AppDelegate.swift */; };
 		E1B40B1C1F732A960044C3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B40B1B1F732A960044C3EA /* ViewController.swift */; };
-		E1B40B211F732A960044C3EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1B40B201F732A960044C3EA /* Assets.xcassets */; };
 		E1B40B241F732A960044C3EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B40B221F732A960044C3EA /* LaunchScreen.storyboard */; };
 		E1C010A11F7B51CC00E35E57 /* Pop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = E1C0109F1F7B4E8400E35E57 /* Pop.aiff */; };
 		E1C010A51F7B562F00E35E57 /* Intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E1C010A41F7B561F00E35E57 /* Intro.mp3 */; };
@@ -163,12 +163,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E137AF7D1F7F245700487637 /* Assets.xcassets in Resources */,
 				E1C010A51F7B562F00E35E57 /* Intro.mp3 in Resources */,
 				E1C010A11F7B51CC00E35E57 /* Pop.aiff in Resources */,
 				E15476341F78CDD000C65F6F /* Main.storyboard in Resources */,
 				E17F4DE11F75BEED00DE71B4 /* Automatica-BRK.ttf in Resources */,
 				E1B40B241F732A960044C3EA /* LaunchScreen.storyboard in Resources */,
-				E1B40B211F732A960044C3EA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
