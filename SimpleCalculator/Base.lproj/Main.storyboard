@@ -502,7 +502,7 @@
                                 <rect key="frame" x="0.0" y="61" width="320" height="507"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="23" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1k-bD-6uq">
-                                        <rect key="frame" x="21" y="40" width="278" height="405.5"/>
+                                        <rect key="frame" x="21" y="40" width="278" height="482.5"/>
                                         <string key="text">Assignment 1
 Simple Calculator App
 

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // For playing a short music intro for the launch screen
         playSound(file: "Intro", ext: "mp3")
+        sleep(4)
         return true
     }
 
