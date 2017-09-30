@@ -197,6 +197,11 @@ class ViewController: UIViewController {
         // Sound when push the button
         playSound(file: "Pop", ext: "aiff")
         
+        // To avoid repeated execution when a binary operation button has just pushed before
+        if inputState == .BinaryOperationInProgress {
+            return
+        }
+        
         inputState = .BinaryOperationInProgress
         let currentOperation: InputType = getInputType(sender.tag)
         let currentOperationAsString: String = String(describing: currentOperation)
