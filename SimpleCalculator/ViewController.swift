@@ -8,7 +8,7 @@
  * Version: 0.96 - Moved audio playing method to a separated swift file
  * Notes:
  *   - UI design/development using iPhone SE, then scaled up to larger screens
- *   - Some constraints warning are shown in the storyboard, but the simulator renders the App correctly
+ *   - Some constraints warfning are shown in the storyboard, but the simulator renders the App correctly
  *   - Buttons size correctly for landscape orientation for all iPhones screen, but the images used as background does not size very good for landscape
  */
 
@@ -165,7 +165,7 @@ class ViewController: UIViewController {
                 }
                 return
             case .Percentage:
-                let percentage: Float = getPercentageValue(displayText.text!)
+                let percentage: Double = getPercentageValue(displayText.text!)
                 if operationStack.isEmpty() {
                     showInDisplay(String(percentage))
                     lastBinaryOperation = nil
@@ -178,7 +178,7 @@ class ViewController: UIViewController {
                         return
                     }
                     if operationInStack == "Addition" || operationInStack == "Substraction" {
-                        showInDisplay(String(Float(previousOperand!)! * percentage))
+                        showInDisplay(String(Double(previousOperand!)! * percentage))
                     }
                     else {
                         showInDisplay(String(percentage))
@@ -315,8 +315,8 @@ class ViewController: UIViewController {
     }
     
     // Divide a number by 100 to get the percentage of the value compared to 100
-    private func getPercentageValue(_ value: String?) -> Float{
-        return Float(value!)! / 100
+    private func getPercentageValue(_ value: String?) -> Double{
+        return Double(value!)! / 100
     }
     
     // Set calculation variables to their initial values
@@ -329,7 +329,7 @@ class ViewController: UIViewController {
     // Executes binary operations
     // Apply every operation to 2 operands
     private func getBinaryOperationResult(_ firstOperand: String, _ secondOperand: String, _ operation: String) -> String {
-        if Float(firstOperand) == nil || Float(secondOperand) == nil || (operation == "Division" && secondOperand == "0") {
+        if Double(firstOperand) == nil || Double(secondOperand) == nil || (operation == "Division" && secondOperand == "0") {
             resetOperationsEnvironment()
             return  errorMessage
         }
@@ -337,13 +337,13 @@ class ViewController: UIViewController {
         lastBinaryOperation = operation
         switch operation {
             case "Addition":
-                return String( Float(firstOperand)! + Float(secondOperand)! )
+                return String( Double(firstOperand)! + Double(secondOperand)! )
             case "Substraction":
-                return String( Float(firstOperand)! - Float(secondOperand)! )
+                return String( Double(firstOperand)! - Double(secondOperand)! )
             case "Multiplication":
-                return String( Float(firstOperand)! * Float(secondOperand)! )
+                return String( Double(firstOperand)! * Double(secondOperand)! )
             case "Division":
-                return String( Float(firstOperand)! / Float(secondOperand)! )
+                return String( Double(firstOperand)! / Double(secondOperand)! )
             default:
                 return initialStringOnDisplay
         }
