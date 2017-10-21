@@ -1,9 +1,8 @@
 {
   "images" : [
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "Icon-RobCalculator@1x orig copy.png",
+      "size" : "20x20",
       "scale" : "2x"
     },
     {
@@ -22,9 +21,8 @@
       "scale" : "3x"
     },
     {
+      "idiom" : "iphone",
       "size" : "40x40",
-      "idiom" : "iphone",
-      "filename" : "Icon-RobCalculator@2x orig copy.png",
       "scale" : "2x"
     },
     {
@@ -35,13 +33,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Icon-RobCalculator@2x orig copy-1.png",
+      "filename" : "Icon-RobCalculator-120x120.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Icon-RobCalculator@3x orig copy.png",
+      "filename" : "Icon-RobCalculator-180x180.png",
       "scale" : "3x"
     },
     {
@@ -75,18 +73,21 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "Icon-RobCalculator-76x76.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "Icon-RobCalculator@152x152.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "Icon-RobCalculator@167x167.png",
       "scale" : "2x"
     },
     {
